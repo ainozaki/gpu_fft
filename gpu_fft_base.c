@@ -149,6 +149,8 @@ int gpu_fft_alloc (
         return -3;
     }
 
+    // mapmem : mapping paddr to vaddr
+    // maps peripheral address for direct register poking
     peri = (volatile unsigned *) mapmem(host.peri_addr, host.peri_size);
     if (!peri) {
         mem_free(mb, handle);
@@ -156,6 +158,7 @@ int gpu_fft_alloc (
         return -4;
     }
 
+    // maps shared memory
     ptr->vc = mem_lock(mb, handle);
     ptr->arm.vptr = mapmem(BUS_TO_PHYS(ptr->vc+host.mem_map), size);
 
