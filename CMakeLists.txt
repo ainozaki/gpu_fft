@@ -7,3 +7,4 @@ add_library(gpu_fft STATIC
     gpu_fft_twiddles.c
     gpu_fft_shaders.c
 )
+target_link_libraries(gpu_fft rt m dl)
