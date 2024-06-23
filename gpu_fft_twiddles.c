@@ -311,5 +311,5 @@ int gpu_fft_twiddle_size(int log2_N, int *shared, int *unique, int *passes) {
 }
 
 void gpu_fft_twiddle_data(int log2_N, int direction, float *out) {
-    shaders[log2_N-8].twiddles((direction==GPU_FFT_FWD?-1:3)*GPU_FFT_PI, out);
+    shaders[log2_N-8].twiddles((direction==GPU_FFT_FWD?-2:2)*GPU_FFT_PI, out);
 }
